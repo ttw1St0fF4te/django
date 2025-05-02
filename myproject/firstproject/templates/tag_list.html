@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Теги</title>
+</head>
+<body>
+    <h1>Теги</h1>
+    <ul>
+        {% for tag in tags %}
+            <li>
+                <a href="{% url 'catalog' %}?tag={{ tag.id }}">{{ tag.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_tag' %}">Добавить тег</a>
+</body>
+</html>

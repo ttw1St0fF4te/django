@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить тег</title>
+</head>
+<body>
+    <h1>Добавить тег</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{% url 'tag_list' %}">Обратно в теги</a>
+</body>
+</html>

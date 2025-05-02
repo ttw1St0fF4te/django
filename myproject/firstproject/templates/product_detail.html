@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Детали товара</title>
+    <title>{{ product.name }}</title>
 </head>
 <body>
-    <h1>Детали товара</h1>
-    <p>ID товара: {{ product_id }}</p>
-    <p>Здесь будут подробности о товаре.</p>
+    <h1>{{ product.name }}</h1>
+    <p>{{ product.description }}</p>
+    <p>Цена: {{ product.price }}</p>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+    <p>Теги</p>
+    <ul>
+        {% for tag in product.tags.all %}
+            <li><a href="{% url 'tag_list' %}?tag={{ tag.id }}">{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'edit_product' product.id %}">Изменить</a>
+    <a href="{% url 'delete_product' product.id %}">Удалить</a>
+    <a href="{% url 'catalog' %}">Обратно в каталог</a>
 </body>
 </html>

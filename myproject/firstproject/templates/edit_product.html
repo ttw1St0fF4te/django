@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Редактирование товара</title>
+    <title>Изменить товар</title>
 </head>
 <body>
-    <h1>Редактирование товара</h1>
-    <p>ID товара: {{ product_id }}</p>
-    <p>Здесь вы можете отредактировать товар.</p>
+    <h1>Изменить товар</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{% url 'catalog' %}">Обратно в каталог</a>
 </body>
 </html>

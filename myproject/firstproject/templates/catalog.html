@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Каталог магазина</title>
+    <title>Каталог</title>
 </head>
 <body>
-    <h1>Каталог магазина</h1>
-    <p>Здесь вы можете просмотреть все доступные товары.</p>
+    <h1>Каталог</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_product' %}">Добавить товар</a>
 </body>
 </html>
