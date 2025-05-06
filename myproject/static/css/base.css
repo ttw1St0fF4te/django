@@ -1,0 +1,11 @@
+:root {
+    --primary-color: #2c3e50;    /* Основной цвет текста */
+    --text-color: #4a5568;       /* Вторичный цвет текста */
+    --accent-color: #3498db;     /* Акцентный цвет (кнопки) */
+    --accent-hover: #2980b9;     /* Акцентный цвет при наведении */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}

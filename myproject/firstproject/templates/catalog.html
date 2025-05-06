@@ -1,17 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Каталог</title>
-</head>
-<body>
-    <h1>Каталог</h1>
-    <ul>
-        {% for product in products %}
-            <li>
-                <a href="{% url 'product_detail' product.id %}">{{ product.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'add_product' %}">Добавить товар</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    Каталог товаров
+{% endblock %}
+
+{% block content %}
+    <div class="catalog-container">
+        <h1 class="catalog-title">Каталог товаров</h1>
+        
+        <div class="products-grid">
+            {% for product in products %}
+                <div class="product-card">
+                    {% if product.image %}
+                        <div class="product-image">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </div>
+                    {% endif %}
+                    <div class="product-info">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <p class="product-price">{{ product.price }} ₽</p>
+                        {% if product.description %}
+                            <p class="product-description">{{ product.description|truncatechars:100 }}</p>
+                        {% endif %}
+                        
+                        <div class="product-meta">
+                            <span class="product-category">{{ product.category.name }}</span>
+                            <div class="product-tags">
+                                {% for tag in product.tags.all %}
+                                    <span class="tag">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <a href="{% url 'product_detail' product.id %}" class="product-link">Подробнее</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <a href="{% url 'add_product' %}" class="add-product-btn">Добавить товар</a>
+    </div>
+{% endblock %}

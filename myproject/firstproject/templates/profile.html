@@ -1,11 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Профиль пользователя</title>
-</head>
-<body>
-    <h1>Профиль пользователя</h1>
-    <p>Здесь вы можете управлять своим профилем.</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    Профиль пользователя
+{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <h1 class="profile-title">Профиль пользователя</h1>
+        <p class="profile-description">
+            Здесь вы можете управлять своим профилем.
+        </p>
+    </div>
+{% endblock %}

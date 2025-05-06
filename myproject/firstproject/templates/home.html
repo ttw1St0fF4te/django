@@ -1,27 +1,24 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Главная страница</title>
-</head>
-<body>
-    <header class="header">
-        <nav>
-            <ul class="nav-list">
-                <li><a href="{% url 'home' %}" class="nav-link">Главная</a></li>
-                <li><a href="{% url 'catalog' %}" class="nav-link">Каталог</a></li>
-                <li><a href="{% url 'cart' %}" class="nav-link">Корзина</a></li>
-                <li><a href="{% url 'about' %}" class="nav-link">О нас</a></li>
-                <li><a href="{% url 'profile' %}" class="nav-link">Профиль</a></li>
-                <li><a href="{% url 'category_list' %}" class="nav-link">Категории</a></li>
-                <li><a href="{% url 'tag_list' %}" class="nav-link">Теги</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends "base.html" %}
+{% load static %}
 
-    <main>
-        <h1>Добро пожаловать на главную страницу!</h1>
-        <p>Это начальная страница проекта.</p>
-    </main>
-</body>
-</html>
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+    <div class="home-content">
+        <h1 class="home-title">Добро пожаловать!</h1>
+        <p class="home-text">
+            Мы рады приветствовать вас в нашем интернет-магазине. 
+            Здесь вы найдете лучшие товары по выгодным ценам.
+        </p>
+        <a href="{% url 'catalog' %}" class="catalog-link">
+            Перейти в каталог →
+        </a>
+    </div>
+{% endblock %}

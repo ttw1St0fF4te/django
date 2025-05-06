@@ -1,11 +1,29 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>О нас</title>
-</head>
-<body>
-    <h1>О нас</h1>
-    <p>Здесь вы можете узнать больше о нашем проекте.</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    О нас
+{% endblock %}
+
+{% block content %}
+    <div class="about-content">
+        <h1>О нас</h1>
+        <p class="intro-text">Здесь вы можете узнать больше о нашем проекте.</p>
+        
+        <div class="about-sections">
+            <div class="about-section">
+                <h2>Наша история</h2>
+                <p>Расскажите здесь о том, как начинался ваш проект.</p>
+            </div>
+            <div class="about-section">
+                <h2>Наша команда</h2>
+                <p>Опишите состав вашей команды и ключевых сотрудников.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

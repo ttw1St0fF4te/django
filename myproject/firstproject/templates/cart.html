@@ -1,11 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Корзина</title>
-</head>
-<body>
-    <h1>Корзина</h1>
-    <p>Здесь вы можете просмотреть и изменить содержимое вашей корзины.</p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    Корзина
+{% endblock %}
+
+{% block content %}
+    <div class="cart-container">
+        <h1 class="cart-title">Корзина</h1>
+        <p class="cart-description">
+            Здесь вы можете просмотреть и изменить содержимое вашей корзины.
+        </p>
+    </div>
+{% endblock %}

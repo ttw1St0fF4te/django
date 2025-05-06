@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Теги</title>
-</head>
-<body>
-    <h1>Теги</h1>
-    <ul>
-        {% for tag in tags %}
-            <li>
-                <a href="{% url 'catalog' %}?tag={{ tag.id }}">{{ tag.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'add_tag' %}">Добавить тег</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/tag_list.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    Теги
+{% endblock %}
+
+{% block content %}
+    <div class="tags-container">
+        <h1 class="tags-title">Теги</h1>
+        <ul class="tags-list">
+            {% for tag in tags %}
+                <li class="tag-item">
+                    <a href="{% url 'catalog' %}?tag={{ tag.id }}" class="tag-link">{{ tag.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add_tag' %}" class="add-tag-btn">Добавить тег</a>
+    </div>
+{% endblock %}

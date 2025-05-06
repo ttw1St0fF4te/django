@@ -1,17 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Категории</title>
-</head>
-<body>
-    <h1>Категории</h1>
-    <ul>
-        {% for category in categories %}
-            <li>
-                <a href="{% url 'catalog' %}?category={{ category.id }}">{{ category.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'add_category' %}">Добавить категорию</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block link_style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/category_list.css' %}">
+{% endblock %}
+
+{% block title_name %}
+    Категории товаров
+{% endblock %}
+
+{% block content %}
+    <div class="categories-container">
+        <h1 class="categories-title">Категории товаров</h1>
+        
+        <div class="categories-grid">
+            {% for category in categories %}
+                <a href="{% url 'catalog' %}?category={{ category.id }}" class="category-card">
+                    <div class="category-content">
+                        <h3 class="category-name">{{ category.name }}</h3>
+                        {% if category.description %}
+                            <p class="category-description">{{ category.description|truncatechars:100 }}</p>
+                        {% endif %}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        
+        <a href="{% url 'add_category' %}" class="add-category-btn">Добавить категорию</a>
+    </div>
+{% endblock %}

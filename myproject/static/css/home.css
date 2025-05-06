@@ -1,0 +1,40 @@
+.home-content {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    text-align: center;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.home-title {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.home-text {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+    line-height: 1.6;
+}
+
+.catalog-link {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: #f8f9fa;
+    color: black;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11);
+}
+
+.catalog-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.2);
+    background-color: var(--accent-hover);
+}
