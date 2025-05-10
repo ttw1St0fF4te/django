@@ -8,6 +8,12 @@
             <li><a href="{% url 'tag_list' %}" class="nav-link">Теги</a></li>
             <li><a href="{% url 'cart' %}" class="nav-link">Корзина</a></li>
             <li><a href="{% url 'profile' %}" class="nav-link">Профиль</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="/logout/" class="nav-link">Выход</a></li>
+            {% else %}
+                <li><a href="/login/" class="nav-link">Вход</a></li>
+                <li><a href="/register/" class="nav-link">Регистрация</a></li>
+            {% endif %}
         </ul>
     </nav>
 </header>

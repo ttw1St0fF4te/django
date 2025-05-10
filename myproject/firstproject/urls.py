@@ -1,5 +1,7 @@
 from django.urls import path
+from rest_framework.routers import DefaultRouter
 from .views import *
+from .views import CategoryViewSet, TagViewSet, ProductViewSet, OrderViewSet, OrderItemViewSet, register, user_login, user_logout
 
 urlpatterns = [
     # Основные страницы
@@ -25,4 +27,19 @@ urlpatterns = [
     # Заказы
     path('create_order/', create_order, name='create_order'),
     path('orders/', orders, name='orders'),
+]
+
+router = DefaultRouter()
+router.register(r'categories', CategoryViewSet)
+router.register(r'tags', TagViewSet)
+router.register(r'products', ProductViewSet)
+router.register(r'orders', OrderViewSet)
+router.register(r'order-items', OrderItemViewSet)
+
+urlpatterns += router.urls
+
+urlpatterns += [
+    path('register/', register, name='register'),
+    path('login/', user_login, name='login'),
+    path('logout/', user_logout, name='logout'),
 ]

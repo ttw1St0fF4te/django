@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>API Документация</title>
-</head>
-<body>
-    <h1>API Документация</h1>
-    <p>Здесь вы можете найти документацию по нашему API.</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>API Documentation</h2>
+  <p>Below is the list of available API endpoints for CRUD operations:</p>
+  <ul>
+    <li><strong>Categories:</strong>
+      <ul>
+        <li>GET /api/categories/ - List all categories</li>
+        <li>POST /api/categories/ - Create a new category</li>
+        <li>GET /api/categories/{id}/ - Retrieve a specific category</li>
+        <li>PUT /api/categories/{id}/ - Update a specific category</li>
+        <li>DELETE /api/categories/{id}/ - Delete a specific category</li>
+      </ul>
+    </li>
+    <li><strong>Tags:</strong>
+      <ul>
+        <li>GET /api/tags/ - List all tags</li>
+        <li>POST /api/tags/ - Create a new tag</li>
+        <li>GET /api/tags/{id}/ - Retrieve a specific tag</li>
+        <li>PUT /api/tags/{id}/ - Update a specific tag</li>
+        <li>DELETE /api/tags/{id}/ - Delete a specific tag</li>
+      </ul>
+    </li>
+    <li><strong>Products:</strong>
+      <ul>
+        <li>GET /api/products/ - List all products</li>
+        <li>POST /api/products/ - Create a new product</li>
+        <li>GET /api/products/{id}/ - Retrieve a specific product</li>
+        <li>PUT /api/products/{id}/ - Update a specific product</li>
+        <li>DELETE /api/products/{id}/ - Delete a specific product</li>
+      </ul>
+    </li>
+    <li><strong>Orders:</strong>
+      <ul>
+        <li>GET /api/orders/ - List all orders</li>
+        <li>POST /api/orders/ - Create a new order</li>
+        <li>GET /api/orders/{id}/ - Retrieve a specific order</li>
+        <li>PUT /api/orders/{id}/ - Update a specific order</li>
+        <li>DELETE /api/orders/{id}/ - Delete a specific order</li>
+      </ul>
+    </li>
+    <li><strong>Order Items:</strong>
+      <ul>
+        <li>GET /api/order-items/ - List all order items</li>
+        <li>POST /api/order-items/ - Create a new order item</li>
+        <li>GET /api/order-items/{id}/ - Retrieve a specific order item</li>
+        <li>PUT /api/order-items/{id}/ - Update a specific order item</li>
+        <li>DELETE /api/order-items/{id}/ - Delete a specific order item</li>
+      </ul>
+    </li>
+  </ul>
+{% endblock %}
