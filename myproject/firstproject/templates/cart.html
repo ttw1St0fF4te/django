@@ -16,5 +16,53 @@
         <p class="cart-description">
             Здесь вы можете просмотреть и изменить содержимое вашей корзины.
         </p>
+
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Цена</th>
+                    <th>Количество</th>
+                    <th>Итого</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product_id, item in cart_items.items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price|floatformat:2|floatformat:2|add:item.quantity }}</td>
+                    <td>
+                        <form method="post" action="/cart/">
+                            {% csrf_token %}
+                            <input type="hidden" name="remove_product_id" value="{{ product_id }}">
+                            <button type="submit" class="remove-button">Удалить</button>
+                        </form>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">Ваша корзина пуста.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form method="post" action="/create_order/">
+            {% csrf_token %}
+            <h2>Оформление заказа</h2>
+            <label for="customer_name">Имя:</label>
+            <input type="text" id="customer_name" name="customer_name" required>
+
+            <label for="customer_phone">Телефон:</label>
+            <input type="text" id="customer_phone" name="customer_phone" required>
+
+            <label for="delivery_address">Адрес доставки:</label>
+            <textarea id="delivery_address" name="delivery_address" required></textarea>
+
+            <button type="submit">Оформить заказ</button>
+        </form>
     </div>
 {% endblock %}

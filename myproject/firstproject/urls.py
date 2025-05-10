@@ -21,4 +21,8 @@ urlpatterns = [
     path('category/add/', CategoryCreateView.as_view(), name='add_category'),
     path('tags/', TagListView.as_view(), name='tag_list'),
     path('tag/add/', TagCreateView.as_view(), name='add_tag'),
+
+    # Заказы
+    path('create_order/', create_order, name='create_order'),
+    path('orders/', orders, name='orders'),
 ]
